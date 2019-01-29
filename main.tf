@@ -14,6 +14,7 @@ resource "aws_instance" "demo_instance" {
   instance_type     = "t2.micro"
   count             = "${length(var.volume)}"
   key_name          = "JINO_N"
+  user_data         = "${file("jino.sh")}"
 
   tags {
     Name = "${var.insatnce_name}_${count.index+1}"
